@@ -1,0 +1,124 @@
+{
+    "reviews": [
+      {
+        "professor": "Dr. Emily Johnson",
+        "subject": "Computer Science",
+        "stars": 5,
+        "review": "Excellent professor! Her lectures are clear, and she's always willing to help."
+      },
+      {
+        "professor": "Prof. Michael Brown",
+        "subject": "Mathematics",
+        "stars": 3,
+        "review": "Decent teacher, but his lectures can be a bit dry. However, he's very knowledgeable."
+      },
+      {
+        "professor": "Dr. Sarah Davis",
+        "subject": "Biology",
+        "stars": 4,
+        "review": "Great professor, very passionate about the subject. Sometimes goes too fast though."
+      },
+      {
+        "professor": "Prof. John Smith",
+        "subject": "History",
+        "stars": 2,
+        "review": "Not very engaging. The class felt more like a reading session than a lecture."
+      },
+      {
+        "professor": "Dr. Rachel Lee",
+        "subject": "Chemistry",
+        "stars": 5,
+        "review": "Fantastic teacher! She makes complex topics easy to understand."
+      },
+      {
+        "professor": "Prof. Robert Wilson",
+        "subject": "Physics",
+        "stars": 3,
+        "review": "Good professor, but sometimes hard to follow. His exams are tough."
+      },
+      {
+        "professor": "Dr. Laura Garcia",
+        "subject": "Psychology",
+        "stars": 4,
+        "review": "Very interesting lectures. She encourages class participation."
+      },
+      {
+        "professor": "Prof. David Martinez",
+        "subject": "Economics",
+        "stars": 2,
+        "review": "The content is difficult, and he doesn't explain it well."
+      },
+      {
+        "professor": "Dr. Andrew Thompson",
+        "subject": "Sociology",
+        "stars": 5,
+        "review": "Engaging and insightful lectures. Highly recommended!"
+      },
+      {
+        "professor": "Prof. Jessica White",
+        "subject": "Philosophy",
+        "stars": 4,
+        "review": "Thought-provoking classes. Sometimes goes off-topic, but overall good."
+      },
+      {
+        "professor": "Dr. Daniel Clark",
+        "subject": "Political Science",
+        "stars": 3,
+        "review": "Average professor. Lectures are okay, but nothing special."
+      },
+      {
+        "professor": "Prof. Karen Lewis",
+        "subject": "English",
+        "stars": 5,
+        "review": "Amazing professor! Her passion for literature is contagious."
+      },
+      {
+        "professor": "Dr. James Walker",
+        "subject": "Engineering",
+        "stars": 4,
+        "review": "Good teacher, but sometimes his examples are too technical."
+      },
+      {
+        "professor": "Prof. Megan Hall",
+        "subject": "Art History",
+        "stars": 2,
+        "review": "Not very engaging. Lectures are mostly just reading from slides."
+      },
+      {
+        "professor": "Dr. Anthony Adams",
+        "subject": "Business",
+        "stars": 5,
+        "review": "Great professor! His real-world examples make the class very interesting."
+      },
+      {
+        "professor": "Prof. Olivia Scott",
+        "subject": "Statistics",
+        "stars": 3,
+        "review": "The material is challenging, but she tries to help students understand."
+      },
+      {
+        "professor": "Dr. William Harris",
+        "subject": "Computer Engineering",
+        "stars": 4,
+        "review": "Good lectures, but his assignments are very difficult."
+      },
+      {
+        "professor": "Prof. Jennifer King",
+        "subject": "Marketing",
+        "stars": 5,
+        "review": "Excellent professor! She brings in a lot of industry experience."
+      },
+      {
+        "professor": "Dr. Thomas Wright",
+        "subject": "Physics",
+        "stars": 2,
+        "review": "The lectures are too fast-paced, and he doesn't explain things well."
+      },
+      {
+        "professor": "Prof. Amanda Green",
+        "subject": "Environmental Science",
+        "stars": 4,
+        "review": "Very knowledgeable and approachable. The class was enjoyable."
+      }
+    ]
+  }
