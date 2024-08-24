@@ -1,114 +1,117 @@
-'use client'
-import React from 'react';
+'use client';
+import { Box, Button, Typography, AppBar, Toolbar, IconButton, Container } from '@mui/material';
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
-import logo from '/public/logo.png'
-import { Container, Box, Typography, AppBar, Toolbar, Button, IconButton } from '@mui/material';
+import logo from '/public/logo.png';
 import { SignIn } from '@clerk/nextjs';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const theme = createTheme({
-    palette: {
-        mode: 'dark',
-        background: {
-            default: '#121212',
-            paper: '#1E1E1E',
-        },
-        text: {
-            primary: '#FFFFFF',
-            secondary: '#B0B0B0',
-        },
-        primary: {
-            main: '#BB86FC',
-        },
-        secondary: {
-            main: '#03DAC6',
-        },
+  palette: {
+    mode: 'light',
+    background: {
+      default: '#E6F3FF',
+      paper: '#FFFFFF',
     },
-    typography: {
-        fontFamily: '"Inter", "Roboto", "Arial", sans-serif',
-        h3: {
-            fontSize: '2rem',
-        },
-        h6: {
-            fontSize: '1.25rem',
-        },
-        body1: {
-            fontSize: '1rem',
-        },
+    text: {
+      primary: '#333333',
+      secondary: '#666666',
     },
+    primary: {
+      main: '#FF6B6B',
+    },
+    secondary: {
+      main: '#4ECDC4',
+    },
+  },
+  typography: {
+    fontFamily: '"Righteous", "Roboto", cursive',
+    h1: {
+      fontSize: '4rem',
+      fontWeight: 700,
+    },
+    h2: {
+      fontSize: '3rem',
+      fontWeight: 700,
+    },
+    h4: {
+      fontSize: '2rem',
+      fontWeight: 600,
+    },
+    h5: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
+    },
+    body1: {
+      fontSize: '1.1rem',
+      fontFamily: '"Fredoka One", cursive',
+    },
+    button: {
+      fontFamily: '"Fredoka One", cursive',
+    },
+  },
 });
 
-const Header = styled(AppBar)(({ theme }) => ({
-    backgroundColor: theme.palette.background.paper,
-    color: theme.palette.text.primary,
-    boxShadow: 'none',
-    padding: '10px 0px',
-    [theme.breakpoints.down('sm')]: {
-        padding: '10px',
-    },
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  backgroundColor: 'rgba(230, 243, 255, 0.8)',
+  boxShadow: 'none',
+  padding: '20px 0',
+  backdropFilter: 'blur(10px)',
 }));
 
-export default function SignUpPage() {
-    return (
-        <ThemeProvider theme={theme}>
-            <Container maxWidth="100vw" sx={{ backgroundColor: theme.palette.background.paper }}>
-                <Header position="static" color="transparent" elevation={0}>
-                    <Toolbar>
-                        <IconButton edge="start" color="inherit" aria-label="logo" href="/">
-                            <Image src={logo} alt="ProfAdvisor Logo" width={50} height={50} />
-                        </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 700, marginLeft: 2 }}>
-                            ProfAdvisor
-                        </Typography>
-                        <SignedOut>
-                            <Button color="primary" variant="contained" href="/sign-in" sx={{ marginRight: 2 }}>Login</Button>
-                            <Button color="primary" variant="outlined" href="/sign-up">Sign Up</Button>
-                        </SignedOut>
-                        <SignedIn>
-                            <UserButton />
-                        </SignedIn>
-                    </Toolbar>
-                </Header>
-                <Box
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    sx={{ textAlign: 'center', my: 4, backgroundColor: theme.palette.background.paper }}
-                >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            mx: 'auto',
-                            p: 4,
-                            backgroundColor: theme.palette.background.paper,
-                            borderRadius: '12px',
-                            width: '100%',
-                            maxWidth: '500px',
-                        }}
-                    >
-                        <SignIn />
-                    </Box>
-                </Box>
-                <Box sx={{
-                    padding: '30px 10px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: theme.palette.background.paper,
-                    borderTop: '1px solid #333',
-                }}>
-                    <Container maxWidth="lg">
-                        <Typography variant="body2" color="textSecondary" align="center">
-                            © {new Date().getFullYear()} ProfAdvisor. All rights reserved.
-                        </Typography>
-                    </Container>
-                </Box>
-            </Container>
-        </ThemeProvider>
-    );
-}
+const SignInSection = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: 'linear-gradient(45deg, #E6F3FF 0%, #FFFFFF 100%)',
+}));
+
+const SignInPage = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <StyledAppBar position="fixed">
+        <Container>
+          <Toolbar disableGutters>
+            <IconButton edge="start" color="inherit" aria-label="logo" href="/">
+              <Image src={logo} alt="ProfLink Logo" width={40} height={40} />
+            </IconButton>
+            <Typography variant="h4" sx={{ flexGrow: 1, fontWeight: 700, ml: 2, color: '#333333' }}>
+              ProfLink
+            </Typography>
+            <SignedOut>
+              <Button color="inherit" href="/sign-in" sx={{ mr: 2 }}>Login</Button>
+              <Button variant="contained" color="secondary" href="/sign-up">Sign Up</Button>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </Toolbar>
+        </Container>
+      </StyledAppBar>
+
+      <SignInSection>
+        <Container>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              mx: 'auto',
+              p: 4,
+              backgroundColor: 'transparent', // Remove the white box
+              borderRadius: '12px',
+              width: '100%',
+              maxWidth: '500px',
+            }}
+          >
+            <SignIn />
+          </Box>
+        </Container>
+      </SignInSection>
+    </ThemeProvider>
+  );
+};
+
+export default SignInPage;

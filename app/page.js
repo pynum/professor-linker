@@ -1,115 +1,107 @@
 'use client';
-import { Box, Button, Typography, AppBar, Toolbar, IconButton, Card, CardContent, CardMedia, Container } from '@mui/material';
+import { Box, Button, Typography, AppBar, Toolbar, IconButton, Paper, Grid, Container } from '@mui/material';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
 import logo from '../public/logo.png';
-import illustration from '../public/illustration.png';
-import feature1 from '../public/feature1.png';
-import feature2 from '../public/feature2.png';
-import feature3 from '../public/feature3.png';
+import illustration from '../public/dez.png';
+import feature1 from '../public/f1.png';
+import feature2 from '../public/f2.png';
+import feature3 from '../public/f3.jpg';
 import { useState, useEffect } from 'react';
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { motion } from 'framer-motion';
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     background: {
-      default: '#121212',
-      paper: '#1E1E1E',
+      default: '#E6F3FF',
+      paper: '#FFFFFF',
     },
     text: {
-      primary: '#FFFFFF',
-      secondary: '#B0B0B0',
+      primary: '#333333',
+      secondary: '#666666',
     },
     primary: {
-      main: '#BB86FC',
+      main: '#FF6B6B',
     },
     secondary: {
-      main: '#03DAC6',
+      main: '#4ECDC4',
     },
   },
   typography: {
-    fontFamily: '"Inter", "Roboto", "Arial", sans-serif',
-    h3: {
-      fontSize: '2rem',
+    fontFamily: '"Righteous", "Roboto", cursive',
+    h1: {
+      fontSize: '4rem',
+      fontWeight: 700,
     },
-    h6: {
-      fontSize: '1.25rem',
+    h2: {
+      fontSize: '3rem',
+      fontWeight: 700,
+    },
+    h4: {
+      fontSize: '2rem',
+      fontWeight: 600,
+    },
+    h5: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
     },
     body1: {
-      fontSize: '1rem',
+      fontSize: '1.1rem',
+      fontFamily: '"Fredoka One", cursive',
+    },
+    button: {
+      fontFamily: '"Fredoka One", cursive',
     },
   },
 });
 
-const Header = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  color: theme.palette.text.primary,
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  backgroundColor: 'rgba(230, 243, 255, 0.8)',
   boxShadow: 'none',
-  padding: '10px 20px',
-  [theme.breakpoints.down('sm')]: {
-    padding: '10px',
-  },
+  padding: '20px 0',
+  backdropFilter: 'blur(10px)',
 }));
 
-const MainContent = styled(Box)(({ theme }) => ({
+const HeroSection = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
   display: 'flex',
-  flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '20px',
-  textAlign: 'left',
-  backgroundColor: theme.palette.background.default,
-  color: theme.palette.text.primary,
-  [theme.breakpoints.down('md')]: {
-    flexDirection: 'column',
-    textAlign: 'center',
-  },
-  [theme.breakpoints.down('sm')]: {
-    padding: '10px',
-  },
+  background: 'linear-gradient(45deg, #E6F3FF 0%, #FFFFFF 100%)',
+  padding: '120px 0 160px',
 }));
 
-const Illustration = styled(Image)({
-  width: '100%',
-  maxWidth: '500px',
-  height: 'auto',
-  borderRadius: '30px',
-  marginBottom: '20px',
-  border: '5px solid #BB86FC'
-});
-
-const FeaturesSection = styled(Box)(({ theme }) => ({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-  gap: '20px',
-  padding: '20px 50px',
-  backgroundColor: theme.palette.background.default,
-  [theme.breakpoints.down('md')]: {
-    padding: '20px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    padding: '10px',
-  },
+const FeatureSection = styled(Box)(({ theme }) => ({
+  padding: '120px 0',
+  background: theme.palette.background.default,
 }));
 
-const FeatureCard = styled(Card)(({ theme }) => ({
-  maxWidth: '100%',
-  borderRadius: '10px',
-  boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)',
-  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+const FeatureItem = styled(motion(Paper))(({ theme }) => ({
+  padding: '40px',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+  borderRadius: '20px',
+  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
   '&:hover': {
     transform: 'scale(1.05)',
-    boxShadow: '0px 6px 30px rgba(0, 0, 0, 0.3)',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
   },
 }));
 
-const FeatureImage = styled(CardMedia)(({ theme }) => ({
-  height: 100,
-  width: 100,
-  borderRadius: '50%',
-  objectFit: 'cover',
-}));
+const StyledImage = styled(Image)({
+  borderRadius: '20px',
+ 
+  background: 'transparent', // Ensure no background is applied
+});
+
+const MotionContainer = styled(motion.div)({
+  width: '100%',
+  height: '100%', // Ensure all boxes have the same height
+});
 
 const HomePage = () => {
   const [checked, setChecked] = useState(false);
@@ -120,106 +112,109 @@ const HomePage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header position="static" color="transparent" elevation={0}>
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="logo" href="/">
-            <Image src={logo} alt="ProfAdvisor Logo" width={50} height={50} />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 700, marginLeft: 2 }}>
-            ProfAdvisor
-          </Typography>
-          <SignedOut>
-              <Button color="primary" variant="contained" href="/sign-in" sx={{ marginRight: 2 }}>Login</Button>
-              <Button color="primary" variant="contained" href="/sign-up">Sign Up</Button>
+      <StyledAppBar position="fixed">
+        <Container>
+          <Toolbar disableGutters>
+            <IconButton edge="start" color="inherit" aria-label="logo" href="/">
+              <Image src={logo} alt="ProfLink Logo" width={40} height={40} />
+            </IconButton>
+            <Typography variant="h4" sx={{ flexGrow: 1, fontWeight: 700, ml: 2, color: '#333333' }}>
+              ProfLink
+            </Typography>
+            <SignedOut>
+              <Button color="inherit" href="/sign-in" sx={{ mr: 2 }}>Login</Button>
+              <Button variant="contained" color="secondary" href="/sign-up">Sign Up</Button>
             </SignedOut>
             <SignedIn>
               <UserButton />
             </SignedIn>
-        </Toolbar>
-      </Header>
+          </Toolbar>
+        </Container>
+      </StyledAppBar>
 
-      <MainContent>
-        <Box flex="1" padding="20px">
-          <Typography variant="h3" component="h1" gutterBottom fontWeight="850">
-            Welcome to ProfAdvisor
-          </Typography>
-          <Typography variant="h6" component="p" gutterBottom fontWeight="550">
-            Your go-to platform for rating and reviewing professors.
-          </Typography>
-          <Typography variant="body1" component="p" gutterBottom>
-            Join our community and share your experiences to help others make informed decisions.
-          </Typography>
-          <Button variant="contained" color="primary" href="/generate" sx={{ marginTop: 2 }}>
-            Get Started
-          </Button>
-        </Box>
-        <Illustration src={illustration} alt="ProfAdvisor Illustration" width={600} height={400} />
-      </MainContent>
+      <HeroSection>
+        <Container>
+          <Grid container spacing={8} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <Typography variant="h1" gutterBottom sx={{ color: '#333333', mb: 4 }}>
+                  Level Up Your College Game
+                </Typography>
+                <Typography variant="h4" paragraph sx={{ color: '#666666', mb: 4 }}>
+                  Get the inside scoop on profs with ProfLink's rad ratings and reviews.
+                </Typography>
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  size="large" 
+                  href="/generate"
+                  sx={{ 
+                    py: 2, 
+                    px: 4, 
+                    borderRadius: '50px', 
+                    fontSize: '1.3rem',
+                    boxShadow: '0 10px 20px rgba(255, 107, 107, 0.4)',
+                  }}
+                >
+                  Jump In
+                </Button>
+              </motion.div>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                <StyledImage src={illustration} alt="ProfLink Illustration" width={600} height={400} />
+              </motion.div>
+            </Grid>
+          </Grid>
+        </Container>
+      </HeroSection>
 
-      <FeaturesSection sx={{
-        paddingBottom: 6
-      }}>
-        <FeatureCard>
-          <FeatureImage
-            component="img"
-            alt="Real-time Reviews"
-            image={feature1.src}
-            sx={{ margin: 2, width: 160, height: 160 }}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Real-time Reviews
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              Get instant feedback and ratings from students about their professors, helping you make better decisions about your education.
-            </Typography>
-          </CardContent>
-        </FeatureCard>
-        <FeatureCard>
-          <FeatureImage
-            component="img"
-            alt="Easy Search"
-            image={feature2.src}
-            sx={{ margin: 2, width: 160, height: 160 }}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Easy Search
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              Find and compare professors based on their ratings, subjects, and student reviews with our intuitive search feature.
-            </Typography>
-          </CardContent>
-        </FeatureCard>
-        <FeatureCard>
-          <FeatureImage
-            component="img"
-            alt="Community Insights"
-            image={feature3.src}
-            sx={{ margin: 2, width: 160, height: 160 }}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Community Insights
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              Engage with a community of students and share your own experiences and recommendations to help others make informed choices.
-            </Typography>
-          </CardContent>
-        </FeatureCard>
-      </FeaturesSection>
+      <FeatureSection>
+        <Container>
+          <Typography variant="h2" align="center" gutterBottom sx={{ mb: 8 }}>
+            Why ProfLink Rocks
+          </Typography>
+          <Grid container spacing={6}>
+            {[
+              { title: "Epic Insights", image: feature1, description: "Dive into the deets with our in-depth prof evaluations and course reviews." },
+              { title: "Easy-Peasy Platform", image: feature2, description: "Navigate like a pro through our super intuitive interface." },
+              { title: "Student Squad", image: feature3, description: "Tap into the hive mind of diverse student experiences and perspectives." }
+            ].map((feature, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <MotionContainer
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
+                  <FeatureItem elevation={3} whileHover={{ scale: 1.05 }}>
+                    <Image src={feature.image} alt={feature.title} width={100} height={100} style={{ marginBottom: '20px' }} />
+                    <Typography variant="h5" component="h3" gutterBottom>
+                      {feature.title}
+                    </Typography>
+                    <Typography variant="body1">
+                      {feature.description}
+                    </Typography>
+                  </FeatureItem>
+                </MotionContainer>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </FeatureSection>
 
-      <Box sx={{
-        padding: '30px 10px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: theme.palette.background.paper,
-        borderTop: '1px solid #333',
-      }}>
-        <Container maxWidth="lg">
-          <Typography variant="body2" color="textSecondary" align="center">
-            © {new Date().getFullYear()} ProfAdvisor. All rights reserved.
+      <Box sx={{ bgcolor: '#D1E8FF', py: 4 }}>
+        <Container>
+          <Typography variant="body1" color="textSecondary" align="center">
+            © {new Date().getFullYear()} ProfLink. Empowering Students with Awesome Knowledge.
           </Typography>
         </Container>
       </Box>
