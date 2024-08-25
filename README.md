@@ -16,10 +16,6 @@ ProfAdvisor is a platform designed to help students make informed decisions when
 - **Authentication:** Clerk
 - **Data Storage:** Pinecone
 
-## Contributors
-
-- **Yuvraj Bhardwaj** - https://github.com/YuvrajBhardwaj1
-
 ## Installation
 
 1. Clone the repository:
