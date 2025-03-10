@@ -145,7 +145,7 @@ const HomePage = () => {
                   Level Up Your College Game
                 </Typography>
                 <Typography variant="h4" paragraph sx={{ color: '#666666', mb: 4 }}>
-                  Get the inside scoop on profs with ProfLink's insightful ratings and reviews.
+                  Get the inside scoop on profs with ProfLink and our insightful ratings and reviews.
                 </Typography>
                 <Button 
                   variant="contained" 
