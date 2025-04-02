@@ -78,8 +78,3 @@ Follow these steps to set up ProfLink on your local machine:
 ## Demo
 
 Check out the live demo of ProfLink [here](https://proflink.vercel.app/).
-
-## Contributing
-
-We welcome contributions to enhance ProfLink. Whether it's fixing bugs, adding new features, or improving documentation, your efforts are appreciated. Please fork the repository, create a new branch, and submit a pull request.
----
